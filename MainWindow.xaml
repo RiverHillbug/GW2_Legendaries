@@ -4,33 +4,11 @@
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:local="clr-namespace:GW2_Legendaries"
+		xmlns:view="clr-namespace:GW2_Legendaries.View"
 		mc:Ignorable="d"
-		Title="GW2 Legendaries" Height="600
-		" Width="450
-		">
-	<Grid>
-		<Grid Background="#FFF5E7DE">
-			<Image Source="/bg.jpg" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill"/>
-			<ScrollViewer HorizontalAlignment="Right" Margin="426,0,0,0" VerticalAlignment="Center"/>
-
-			<StackPanel HorizontalAlignment="Center" Margin="0,175,0,0" VerticalAlignment="Center" Width="200">
-				<Button Content="Weapons" FontFamily="Copperplate Gothic Light" FontSize="20" BorderBrush="#FF4C139D" Background="#99E7DBF9"/>
-				<Button Content="Armor Pieces" Margin="0,15,0,0" Click="Button_Click" FontFamily="Copperplate Gothic Light" FontSize="20" BorderBrush="#FF4C139D" Background="#99E7DBF9"/>
-				<Button Content="Back Items" Margin="0,15,0,0" FontFamily="Copperplate Gothic Light" FontSize="20" BorderBrush="#FF4C139D" Background="#BFE7DBF9"/>
-				<Button Content="Trinkets" Margin="0,15,0,0" FontFamily="Copperplate Gothic Light" FontSize="20" BorderBrush="#FF4C139D" Background="#BFE7DBF9"/>
-				<Button Content="Runes" Margin="0,15,0,0" FontFamily="Copperplate Gothic Light" FontSize="20" BorderBrush="#FF4C139D" Background="#BFE7DBF9"/>
-				<Button Content="Sigils" Margin="0,15,0,0" FontFamily="Copperplate Gothic Light" FontSize="20" BorderBrush="#FF4C139D" Background="#BFE7DBF9"/>
-				<Button Content="Relics" Margin="0,15,0,0" FontFamily="Copperplate Gothic Light" FontSize="20" BorderBrush="#FF4C139D" Background="#BFE7DBF9"/>
-			</StackPanel>
-			<StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top">
-				<Viewbox Height="150">
-					<Image Source="/logo.png" HorizontalAlignment="Center" Stretch="UniformToFill" VerticalAlignment="Top"/>
-				</Viewbox>
-				<TextBlock TextWrapping="Wrap" Text="Legendary Items" FontFamily="Copperplate Gothic Light" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-			</StackPanel>
-
-
-		</Grid>
-
-	</Grid>
+		Title="GW2 Legendaries" Height="600" Width="450">
+	
+	<Window.Content>
+		<view:ItemCategoriesPage VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+	</Window.Content>
 </Window>
