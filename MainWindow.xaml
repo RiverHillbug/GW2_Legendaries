@@ -4,11 +4,16 @@
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:local="clr-namespace:GW2_Legendaries"
-		xmlns:view="clr-namespace:GW2_Legendaries.View"
+		xmlns:vm="clr-namespace:GW2_Legendaries.ViewModel"
 		mc:Ignorable="d"
 		Title="GW2 Legendaries" Height="600" Width="450">
 	
-	<Window.Content>
-		<view:ItemCategoriesPage VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-	</Window.Content>
+	<Window.DataContext>
+		<vm:MainWindowVM/>
+	</Window.DataContext>
+
+	<Grid>
+		<Frame NavigationUIVisibility="Hidden" Content="{Binding CurrentPage}"/>
+	</Grid>
+	
 </Window>

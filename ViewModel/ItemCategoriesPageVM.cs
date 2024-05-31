@@ -1,26 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-
 
 namespace GW2_Legendaries.ViewModel
 {
 	internal class ItemCategoriesPageVM : ObservableObject
 	{
-		public RelayCommand ShowItemsCommand { get; private set; }
+		public RelayCommand<string> ShowItemsCommand { get; }
+		public List<string> ItemCategoriesTexts { get; } = [];
+		public string SelectedCategory { get; private set; } = string.Empty;
 
 		public ItemCategoriesPageVM()
 		{
-			ShowItemsCommand = new RelayCommand(ShowItems);
+			ShowItemsCommand = new RelayCommand<string>(ShowItems);
 		}
 
-		private void ShowItems()
+		private void ShowItems(string? category)
 		{
-			
+			if (category == null)
+				return;
+
+			SelectedCategory = category;
+			OnPropertyChanged(nameof(SelectedCategory));
+			MainWindowVM.Instance?.SwitchPage();
 		}
 	}
 }

@@ -1,0 +1,37 @@
+﻿<Page x:Class="GW2_Legendaries.View.ItemListPage"
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	  xmlns:local="clr-namespace:GW2_Legendaries.View"
+	  xmlns:vm="clr-namespace:GW2_Legendaries.ViewModel"
+	  mc:Ignorable="d" 
+	  d:DesignHeight="600" d:DesignWidth="450"
+	  Title="ItemListPage" Opacity="0.995">
+
+	<Page.DataContext>
+		<vm:ItemListPageVM/>
+	</Page.DataContext>
+
+	<Page.Resources>
+		<vm:ItemListPageVM x:Key="vm"/>
+	</Page.Resources>
+
+	<Grid>
+		<Grid>
+			<ComboBox Foreground="Transparent" Background="Transparent" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}"/>
+			<Image Source="/bg.jpg" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill" Opacity="0.4"/>
+
+			<ListBox Foreground="Transparent" Background="Transparent" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Orientation="Horizontal">
+							<Image Source="{Binding Icon}" Height="35" Width="35" Margin="5"/>
+							<Button Content="{Binding Name}" Padding="15, 5" Command="{Binding ShowItemDescriptionCommand, Source={StaticResource vm}}" CommandParameter="{Binding ID}" Margin="15,5" FontFamily="Copperplate Gothic Light" FontSize="20" BorderBrush="#FF6223BB" Background="#BFE7DBF9" VerticalAlignment="Center" BorderThickness="3"/>
+						</StackPanel>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+		</Grid>
+	</Grid>
+</Page>

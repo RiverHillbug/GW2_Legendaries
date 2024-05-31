@@ -6,26 +6,25 @@
 	  xmlns:local="clr-namespace:GW2_Legendaries.View"
 	  xmlns:vm="clr-namespace:GW2_Legendaries.ViewModel"
 	  mc:Ignorable="d" 
-	  d:DesignHeight="450" d:DesignWidth="800"
+	  d:DesignHeight="600" d:DesignWidth="450"
 	  Title="ItemCategoriesPage">
 
 	<Page.DataContext>
-		<vm:ItemDescriptionPageVM>
-		</vm:ItemDescriptionPageVM>
+		<vm:ItemCategoriesPageVM/>
 	</Page.DataContext>
 
 	<Grid>
 		<ScrollViewer HorizontalAlignment="Left" Margin="433,0,0,0" VerticalAlignment="Center"/>
 
-		<Grid Background="#FFF5E7DE">
+		<Grid Background="Transparent">
 			<Image Source="/bg.jpg" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill"/>
 
-			<StackPanel HorizontalAlignment="Center" Margin="0,175,0,0" VerticalAlignment="Center" Width="200">
-				<Button Content="Weapons" Command="{Binding ShowItemsCommand}" FontFamily="Copperplate Gothic Light" FontSize="20" BorderBrush="#FF4C139D" Background="#99E7DBF9"/>
-				<Button Content="Armor Pieces" Command="{Binding ShowItemsCommand}" Margin="0,15,0,0" FontFamily="Copperplate Gothic Light" FontSize="20" BorderBrush="#FF4C139D" Background="#99E7DBF9"/>
-				<Button Content="Back Items" Command="{Binding ShowItemsCommand}" Margin="0,15,0,0"  FontFamily="Copperplate Gothic Light" FontSize="20" BorderBrush="#FF4C139D" Background="#BFE7DBF9"/>
-				<Button Content="Trinkets" Command="{Binding ShowItemsCommand}" Margin="0,15,0,0" FontFamily="Copperplate Gothic Light" FontSize="20" BorderBrush="#FF4C139D" Background="#BFE7DBF9"/>
-				<Button Content="Runes and Sigils" Command="{Binding ShowItemsCommand}" Margin="0,15,0,0" FontFamily="Copperplate Gothic Light" FontSize="20" BorderBrush="#FF4C139D" Background="#BFE7DBF9"/>
+			<StackPanel HorizontalAlignment="Center" Margin="0,175,0,0" VerticalAlignment="Center" Width="Auto">
+				<Button Padding="15, 5" Content="Weapons" Command="{Binding ShowItemsCommand}" CommandParameter="Weapon" FontFamily="Copperplate Gothic Light" FontSize="20" BorderBrush="#FF6223BB" Background="#BFE7DBF9" BorderThickness="3"/>
+				<Button Padding="15, 5" Content="Armor Pieces" Command="{Binding ShowItemsCommand}" CommandParameter="Armor" Margin="0,10,0,0" FontFamily="Copperplate Gothic Light" FontSize="20" BorderBrush="#FF6223BB" Background="#BFE7DBF9" BorderThickness="3"/>
+				<Button Padding="15, 5" Content="Back Items" Command="{Binding ShowItemsCommand}" CommandParameter="Back" Margin="0,10,0,0"  FontFamily="Copperplate Gothic Light" FontSize="20" BorderBrush="#FF6223BB" Background="#BFE7DBF9" BorderThickness="3"/>
+				<Button Padding="15, 5" Content="Trinkets" Command="{Binding ShowItemsCommand}" CommandParameter="Trinket" Margin="0,10,0,0" FontFamily="Copperplate Gothic Light" FontSize="20" BorderBrush="#FF6223BB" Background="#BFE7DBF9" BorderThickness="3"/>
+				<Button Padding="15, 5" Content="Runes and Sigils" Command="{Binding ShowItemsCommand}" CommandParameter="Misc" Margin="0,10,0,0" FontFamily="Copperplate Gothic Light" FontSize="20" BorderBrush="#FF6223BB" Background="#BFE7DBF9" BorderThickness="3"/>
 			</StackPanel>
 			
 			<StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top">

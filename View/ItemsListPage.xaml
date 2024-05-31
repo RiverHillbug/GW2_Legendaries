@@ -3,18 +3,38 @@
 	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-	  xmlns:local="clr-namespace:GW2_Legendaries"
-	  xmlns:view="clr-namespace:GW2_Legendaries.View"
+	  xmlns:local="clr-namespace:GW2_Legendaries.View"
+	  xmlns:vm="clr-namespace:GW2_Legendaries.ViewModel"
 	  mc:Ignorable="d" 
 	  d:DesignHeight="600" d:DesignWidth="450"
 	  Title="ItemsListPage">
 
+	<Page.DataContext>
+		<vm:ItemsListPageVM/>
+	</Page.DataContext>
+
 	<Grid>
 		<Image Source="/bg.jpg" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill"/>
-		<ScrollViewer>
-			<Grid>
-				<ListBox x:Name="ItemsList" HorizontalAlignment="Center" Height="350" VerticalAlignment="Center" Width="232" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-			</Grid>
-		</ScrollViewer>
+		
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			
+			<ComboBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}"/>
+			
+			<ListBox Grid.Row="1" Foreground="Transparent" Background="Transparent" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Orientation="Horizontal">
+							<Image Source="{Binding Icon}" Height="20" Width="20" Margin="4"/>
+							<Button Content="{Binding Name}" Command="{Binding ShowItemDescriptionCommand}" CommandParameter="{Binding ID}" Margin="10,0" Foreground="White" VerticalAlignment="Center" FontSize="21"/>
+						</StackPanel>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+
+		</Grid>
 	</Grid>
+	
 </Page>

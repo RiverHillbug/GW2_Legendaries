@@ -5,16 +5,18 @@ using GW2_Legendaries.Repository;
 
 namespace GW2_Legendaries.ViewModel
 {
-	internal class ItemsListPageVM : ObservableObject
+	internal class ItemListPageVM : ObservableObject
 	{
 		public RelayCommand<int> ShowItemDescriptionCommand { get; }
 		public List<Item> Items { get; } = [];
 		public string? CurrentCategory { get; set; } = null;
 		public Item? SelectedItem { get; set; } = null;
+		public static ItemListPageVM? Instance { get; private set; } = null;
 
-		public ItemsListPageVM()
+		public ItemListPageVM()
 		{
 			ShowItemDescriptionCommand = new(ShowItemDescription);
+			Instance = this;
 		}
 
 		public void UpdateList(string category)

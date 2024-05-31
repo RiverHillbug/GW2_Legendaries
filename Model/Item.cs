@@ -1,10 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
+using System.Text.RegularExpressions;
 
 namespace GW2_Legendaries.Model
 {
@@ -13,8 +8,19 @@ namespace GW2_Legendaries.Model
 		[JsonProperty(PropertyName = "name")]
 		public string Name { get; set; } = string.Empty;
 
+		//public string Description{ get; set; } = string.Empty;
+
 		[JsonProperty(PropertyName = "description")]
-		public string Description { get; set; } = string.Empty;
+		private string m_Description = string.Empty;
+
+		public string Description
+		{
+			get
+			{
+				return Regex.Replace(m_Description, "<.*?>", string.Empty);
+			}
+			set { m_Description = value; }
+		}
 
 		[JsonProperty(PropertyName = "type")]
 		public string Type { get; set; } = string.Empty;
@@ -24,5 +30,7 @@ namespace GW2_Legendaries.Model
 
 		[JsonProperty(PropertyName = "icon")]
 		public string Icon { get; set; } = string.Empty;
+
+		public string ImagePath => $"../Resources/Images/{ID}.png";
 	}
 }

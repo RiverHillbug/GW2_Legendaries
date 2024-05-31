@@ -11,15 +11,18 @@
   <ItemGroup>
     <None Remove="bg.jpg" />
     <None Remove="logo.png" />
+    <None Remove="Resources\Data\Items.json" />
+    <None Remove="Resources\Data\LegendaryItemsList" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Data\Items.json" />
+    <EmbeddedResource Include="Resources\Data\LegendaryItemsList" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Resources\" />
   </ItemGroup>
 
   <ItemGroup>
