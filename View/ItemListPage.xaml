@@ -20,7 +20,7 @@
 	<Grid>
 		<Grid>
 			<ComboBox Foreground="Transparent" Background="Transparent" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}"/>
-			<Image Source="/bg.jpg" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill" Opacity="0.4"/>
+			<Image Source="/View/bg.jpg" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill" Opacity="0.4"/>
 
 			<ListBox Foreground="Transparent" Background="Transparent" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}">
 				<ListBox.ItemTemplate>

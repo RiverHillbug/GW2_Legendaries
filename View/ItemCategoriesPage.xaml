@@ -14,7 +14,7 @@
 	</Page.DataContext>
 
 	<Grid>
-		<Image Source="/bg.jpg" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill"/>
+		<Image Source="/View/bg.jpg" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill"/>
 
 		<Grid>
 
@@ -32,7 +32,7 @@
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
 
-			<Image Grid.Row="1" Grid.Column="1" Source="/logo.png" HorizontalAlignment="Center" Stretch="Uniform" VerticalAlignment="Top"/>
+			<Image Grid.Row="1" Grid.Column="1" Source="/View/logo.png" HorizontalAlignment="Center" Stretch="UniformToFill" VerticalAlignment="Top"/>
 
 			<Viewbox Grid.Row="2" Grid.Column="1" MaxWidth="500">
 				<TextBlock Width="Auto" Height="Auto" TextWrapping="Wrap" Text="Legendary Items" TextAlignment="Center" FontFamily="Copperplate Gothic Light" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
