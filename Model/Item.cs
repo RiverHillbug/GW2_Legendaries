@@ -17,6 +17,9 @@ namespace GW2_Legendaries.Model
 		{
 			get
 			{
+				if (m_Description == string.Empty)
+					return "This very cool item does not have a description available.";
+
 				return Regex.Replace(m_Description, "<.*?>", string.Empty);
 			}
 			set { m_Description = value; }
