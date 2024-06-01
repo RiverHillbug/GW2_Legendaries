@@ -38,7 +38,11 @@
 
 			<Image Grid.Row="1" Grid.Column="1" Source="{Binding CurrentItem.Icon}" Width="80" Height="80" VerticalAlignment="Top"/> <!--Chose this fixed size due to available icons being small and low resolution-->
 			<TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding CurrentItem.Name}" Width="Auto" VerticalAlignment="Bottom" FontFamily="Copperplate Gothic Light" FontSize="30" TextAlignment="Center" TextWrapping="Wrap"/>
-			<TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding CurrentItem.Type}" Width="Auto" VerticalAlignment="Top" FontFamily="Copperplate Gothic Light" FontSize="20" TextAlignment="Center" TextWrapping="Wrap"/>
+			<TextBlock Grid.Row="2" Grid.Column="1" Width="Auto" VerticalAlignment="Top" FontFamily="Copperplate Gothic Light" FontSize="20" TextAlignment="Center" TextWrapping="Wrap">
+				<Run Text="{Binding CurrentItem.Details.WeightClass}"/>
+				<Run Text=""/>
+				<Run Text="{Binding CurrentItem.Details.Type}"/>
+			</TextBlock>
 			<TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding CurrentItem.Description}" Width="Auto" VerticalAlignment="Top" FontFamily="Copperplate Gothic Light" FontSize="20" TextAlignment="Center" TextWrapping="Wrap"/>
 			<Button Grid.Row="0" Grid.Column="0" Content="Back" Padding="10, 5" Command="{Binding GoBackCommand}" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
