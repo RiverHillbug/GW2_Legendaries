@@ -12,6 +12,7 @@ namespace GW2_Legendaries.ViewModel
 		public ItemListPage ListPage { get; } = new();
 		public ItemDescriptionPage DescriptionPage { get; } = new();
 		public Page CurrentPage { get; set; }
+		public Page PreviousPage { get; set; }
 
 		public RelayCommand SwitchPageCommand { get; }
 
@@ -42,6 +43,7 @@ namespace GW2_Legendaries.ViewModel
 					listPageVM.UpdateList(selectedCategory);
 				}
 
+				PreviousPage = CurrentPage;
 				CurrentPage = ListPage;
 			}
 			else if (CurrentPage is ItemListPage)
@@ -63,9 +65,27 @@ namespace GW2_Legendaries.ViewModel
 					descriptionPageVM.UpdateCurrentItem();
 				}
 
+				PreviousPage = CurrentPage;
 				CurrentPage = DescriptionPage;
 			}
 
+			OnPropertyChanged(nameof(PreviousPage));
+			OnPropertyChanged(nameof(CurrentPage));
+		}
+
+		public void GoBack()
+		{
+			if (CurrentPage is ItemListPage || CurrentPage is ItemDescriptionPage)
+			{
+				CurrentPage = PreviousPage;
+				
+				if (CurrentPage is ItemListPage)
+				{
+					PreviousPage = MainPage;
+				}
+			}
+
+			OnPropertyChanged(nameof(PreviousPage));
 			OnPropertyChanged(nameof(CurrentPage));
 		}
 	}

@@ -32,7 +32,7 @@
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
 
-			<Image Grid.Row="1" Grid.Column="1" Source="/View/logo.png" HorizontalAlignment="Center" Stretch="UniformToFill" VerticalAlignment="Top"/>
+			<Image Grid.Row="1" Grid.Column="1" Source="/View/logo.png" HorizontalAlignment="Center" Stretch="Uniform" VerticalAlignment="Top"/>
 
 			<Viewbox Grid.Row="2" Grid.Column="1" MaxWidth="500">
 				<TextBlock Width="Auto" Height="Auto" TextWrapping="Wrap" Text="Legendary Items" TextAlignment="Center" FontFamily="Copperplate Gothic Light" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>

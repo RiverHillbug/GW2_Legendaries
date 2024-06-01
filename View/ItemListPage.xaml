@@ -18,11 +18,26 @@
 	</Page.Resources>
 
 	<Grid>
+		<ComboBox Foreground="Transparent" Background="Transparent" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}"/>
+		<Image Source="/View/bg.jpg" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill" Opacity="0.4"/>
 		<Grid>
-			<ComboBox Foreground="Transparent" Background="Transparent" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}"/>
-			<Image Source="/View/bg.jpg" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill" Opacity="0.4"/>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="10*"/>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
 
-			<ListBox Foreground="Transparent" Background="Transparent" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="10*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<Viewbox Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+				<TextBlock Text="{Binding CurrentCategory, Source={StaticResource vm}}" FontFamily="Copperplate Gothic Light" FontSize="25"/>
+			</Viewbox>
+		
+			<ListBox Grid.Row="1" Grid.Column="1" Foreground="Transparent" Background="Transparent" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}">
 				<ListBox.ItemTemplate>
 					<DataTemplate>
 						<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Orientation="Horizontal">
@@ -32,6 +47,9 @@
 					</DataTemplate>
 				</ListBox.ItemTemplate>
 			</ListBox>
+
+			<Button Grid.Row="0" Grid.Column="0" Content="Back" Padding="10, 5" Command="{Binding GoBackCommand}" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
 		</Grid>
 	</Grid>
 </Page>

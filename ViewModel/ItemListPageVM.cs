@@ -9,6 +9,7 @@ namespace GW2_Legendaries.ViewModel
 	internal class ItemListPageVM : ObservableObject
 	{
 		public RelayCommand<int> ShowItemDescriptionCommand { get; }
+		public RelayCommand GoBackCommand { get; }
 		//public List<Item> Items { get; set; } = [];
 		public ObservableCollection<Item> Items { get; set; } = [];
 		public string? CurrentCategory { get; set; } = null;
@@ -18,6 +19,7 @@ namespace GW2_Legendaries.ViewModel
 		public ItemListPageVM()
 		{
 			ShowItemDescriptionCommand = new(ShowItemDescription);
+			GoBackCommand = new RelayCommand(GoBack);
 			Instance = this;
 		}
 
@@ -53,6 +55,12 @@ namespace GW2_Legendaries.ViewModel
 			SelectedItem = ItemRepository.GetItemWithID(ID);
 			OnPropertyChanged(nameof(SelectedItem));
 			MainWindowVM.Instance?.SwitchPage();
+		}
+
+
+		private void GoBack()
+		{
+			MainWindowVM.Instance?.GoBack();
 		}
 	}
 }
