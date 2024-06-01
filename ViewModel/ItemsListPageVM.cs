@@ -21,7 +21,7 @@ namespace GW2_Legendaries.ViewModel
 		{
 			Items.Clear();
 
-			List<Item>? items = ItemRepository.GetItems(category);
+			List<Item>? items = ItemRepository.GetItemsAsync(category);
 
 			if (items != null)
 				Items.AddRange(items);
