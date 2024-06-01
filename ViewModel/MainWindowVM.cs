@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using GW2_Legendaries.Repository;
 using GW2_Legendaries.View;
 using System.Windows.Controls;
 
@@ -20,7 +21,7 @@ namespace GW2_Legendaries.ViewModel
 		{
 			CurrentPage = MainPage;
 			SwitchPageCommand = new(SwitchPage);
-
+			//ItemRepository.GetItemsAsync(string.Empty);	// Doing this here only because all pages use the same list of items and the amount is not huge
 			Instance = this;
 		}
 

@@ -2,13 +2,15 @@
 using CommunityToolkit.Mvvm.Input;
 using GW2_Legendaries.Model;
 using GW2_Legendaries.Repository;
+using System.Collections.ObjectModel;
 
 namespace GW2_Legendaries.ViewModel
 {
 	internal class ItemListPageVM : ObservableObject
 	{
 		public RelayCommand<int> ShowItemDescriptionCommand { get; }
-		public List<Item> Items { get; } = [];
+		//public List<Item> Items { get; set; } = [];
+		public ObservableCollection<Item> Items { get; set; } = [];
 		public string? CurrentCategory { get; set; } = null;
 		public Item? SelectedItem { get; set; } = null;
 		public static ItemListPageVM? Instance { get; private set; } = null;
@@ -22,16 +24,34 @@ namespace GW2_Legendaries.ViewModel
 		public void UpdateList(string category)
 		{
 			Items.Clear();
+			OnPropertyChanged(nameof(Items));
+			CurrentCategory = category;
+			OnPropertyChanged(nameof(CurrentCategory));
 
-			List<Item>? items = ItemRepository.GetItems(category);
+			Task<List<Item>> taskRes = Task.Run(() =>
+			{
+				List<Item> items = ItemRepository.GetItemsAsync(category).Result;
+				return items;
+			});
 
-			if (items != null)
-				Items.AddRange(items);
+			taskRes.ConfigureAwait(true).GetAwaiter().OnCompleted(() =>
+			{
+				if (taskRes != null)
+				{
+					foreach (Item item in taskRes.Result)
+					{
+						Items.Add(item);
+					}
+					
+					OnPropertyChanged(nameof(Items));
+				}
+			});
 		}
 
 		public void ShowItemDescription(int ID)
 		{
 			SelectedItem = ItemRepository.GetItemWithID(ID);
+			OnPropertyChanged(nameof(SelectedItem));
 			MainWindowVM.Instance?.SwitchPage();
 		}
 	}

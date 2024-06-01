@@ -8,8 +8,6 @@ namespace GW2_Legendaries.Model
 		[JsonProperty(PropertyName = "name")]
 		public string Name { get; set; } = string.Empty;
 
-		//public string Description{ get; set; } = string.Empty;
-
 		[JsonProperty(PropertyName = "description")]
 		private string m_Description = string.Empty;
 
@@ -34,6 +32,6 @@ namespace GW2_Legendaries.Model
 		[JsonProperty(PropertyName = "icon")]
 		public string Icon { get; set; } = string.Empty;
 
-		public string ImagePath => $"../Resources/Images/{ID}.png";
+		public string ImagePath => $"../Resources/Images/{ID}.png";	// The API does not have preview pictures so the only way to show those is manually making a list/folder
 	}
 }
