@@ -4,3 +4,5 @@ GW2_Legendaries is a tool that displays the legendary items from Guild Wars 2. C
 This is still a work in progress, I will be adding UI/UX improvements and possibly more features in the future!
 
 ![GW2_Legendaries](https://github.com/milamoonflower/GW2_Legendaries/assets/55928191/8e45120a-c748-4723-8bab-56d8944a55ba)
+
+For more info about the Guild Wars 2 API go to https://wiki.guildwars2.com/wiki/API:Main
