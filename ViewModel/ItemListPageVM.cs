@@ -10,9 +10,8 @@ namespace GW2_Legendaries.ViewModel
 	{
 		public RelayCommand<int> ShowItemDescriptionCommand { get; }
 		public RelayCommand GoBackCommand { get; }
-		//public List<Item> Items { get; set; } = [];
-		public ObservableCollection<Item> Items { get; set; } = [];
-		public string? CurrentCategory { get; set; } = null;
+		public ObservableCollection<Item> Items { get; } = [];
+		public string? CurrentCategory { get; private set; } = null;
 		public Item? SelectedItem { get; set; } = null;
 		public static ItemListPageVM? Instance { get; private set; } = null;
 
@@ -32,7 +31,10 @@ namespace GW2_Legendaries.ViewModel
 
 			Task<List<Item>> taskRes = Task.Run(() =>
 			{
-				List<Item> items = ItemRepository.GetItemsAsync(category).Result;
+#if LOCAL
+#else
+				List<Item> items = ItemRepository.GetItemsAsync(category)?.Result ?? [];
+#endif
 				return items;
 			});
 

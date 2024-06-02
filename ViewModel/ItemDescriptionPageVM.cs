@@ -9,9 +9,9 @@ namespace GW2_Legendaries.ViewModel
 	{
 		public RelayCommand GoBackCommand { get; }
 		public int CurrentItemID { get; set; } = 0;
-		private Item m_CurrentItem = new();
+		private Item? m_CurrentItem = new();
 
-		public Item CurrentItem 
+		public Item? CurrentItem
 		{
 			get => m_CurrentItem;
 			set
@@ -29,6 +29,7 @@ namespace GW2_Legendaries.ViewModel
 		public void UpdateCurrentItem()
 		{
 			CurrentItem = ItemRepository.GetItemWithID(CurrentItemID);
+
 			OnPropertyChanged(nameof(CurrentItem));
 			OnPropertyChanged(nameof(CurrentItemID));
 		}

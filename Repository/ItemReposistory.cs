@@ -5,19 +5,20 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Net.Http;
 using System.Reflection;
-using System.Reflection.PortableExecutable;
 
 
 namespace GW2_Legendaries.Repository
 {
 	public class ItemRepository
 	{
+#if !LOCAL
 		private static Mutex m_Mutex = new Mutex();
+#endif
 		private static readonly List<Item> m_Items = [];
 
-		private static async Task DeserializeItems()
-		{
 #if LOCAL
+		private static void DeserializeItems()
+		{
 			Assembly assembly = Assembly.GetExecutingAssembly();
 			string resourceName = "GW2_Legendaries.Resources.Data.Items.json";
 
@@ -32,7 +33,10 @@ namespace GW2_Legendaries.Repository
 			{
 				m_Items.AddRange(items);
 			}
+		}
 #else
+		private static async Task DeserializeItems()
+		{
 			using HttpClient client = new();
 			const string itemIDsEndpoint = "https://api.guildwars2.com/v2/legendaryarmory";  // We get a list of the IDs of legendary items here
 			const string itemsEndpoint = "https://api.guildwars2.com/v2/items/";  // Add the item ID at the end to get details
@@ -87,8 +91,8 @@ namespace GW2_Legendaries.Repository
 			{
 				Console.WriteLine(ex.ToString());
 			}
-#endif
 		}
+#endif
 
 		public static Item? GetItemWithID(int ID)
 		{
@@ -97,14 +101,18 @@ namespace GW2_Legendaries.Repository
 
 		public static async Task<List<Item>>? GetItemsAsync(string type)
 		{
+#if LOCAL
+			if (m_Items.Count == 0)
+				DeserializeItems();
+#else
 			if (m_Items.Count == 0)
 				await DeserializeItems();
+#endif
 
 			if (type == "Misc")
 			{
 				List<Item>? list = [];
-				list.AddRange(m_Items.Where(item => item.Type == "rune").ToList());
-				list.AddRange(m_Items.Where(item => item.Type == "sigil").ToList());
+				list.AddRange(m_Items.Where(item => item.Type == "UpgradeComponent").ToList());
 
 				return list;
 			}

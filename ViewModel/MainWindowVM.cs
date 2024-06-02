@@ -11,8 +11,8 @@ namespace GW2_Legendaries.ViewModel
 		public ItemCategoriesPage MainPage { get; } = new();
 		public ItemListPage ListPage { get; } = new();
 		public ItemDescriptionPage DescriptionPage { get; } = new();
-		public Page CurrentPage { get; set; }
-		public Page PreviousPage { get; set; }
+		public Page? CurrentPage { get; set; } = null;
+		public Page? PreviousPage { get; set; } = null;
 
 		public RelayCommand SwitchPageCommand { get; }
 
@@ -39,7 +39,6 @@ namespace GW2_Legendaries.ViewModel
 
 				if (ListPage.DataContext is ItemListPageVM listPageVM)
 				{
-					listPageVM.CurrentCategory = selectedCategory;
 					listPageVM.UpdateList(selectedCategory);
 				}
 
@@ -48,7 +47,7 @@ namespace GW2_Legendaries.ViewModel
 			}
 			else if (CurrentPage is ItemListPage)
 			{
-				int selectedItemID = 0;
+				int selectedItemID;
 
 				if (ListPage.DataContext is ItemListPageVM listPageVM && listPageVM.SelectedItem != null)
 				{
@@ -56,7 +55,7 @@ namespace GW2_Legendaries.ViewModel
 				}
 				else
 				{
-					selectedItemID = ItemListPageVM.Instance.SelectedItem.ID;
+					selectedItemID = ItemListPageVM.Instance?.SelectedItem?.ID ?? 0;
 				}
 
 				if (DescriptionPage.DataContext is ItemDescriptionPageVM descriptionPageVM)
